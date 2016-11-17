@@ -12,24 +12,24 @@
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	int i;
 	int j;
 
-	if (!(*s2))
-		return ((char *)s1);
+	if (!(*little))
+		return ((char *)big);
 	i = 0;
 	j = 0;
-	while (s1[i] && i < (int)n)
+	while (big[i] && i < (int)len)
 	{
-		while (s1[i] && s2[j] && s1[i] == s2[j] && i < (int)n)
+		while (big[i] && little[j] && big[i] == little[j] && i < (int)len)
 		{
 			i++;
 			j++;
 		}
-		if (j == (int)ft_strlen(s2))
-			return ((char *)s1 + i - j);
+		if (j == (int)ft_strlen(little))
+			return ((char *)big + i - j);
 		else
 			i = (i - j) + 1;
 		j = 0;
